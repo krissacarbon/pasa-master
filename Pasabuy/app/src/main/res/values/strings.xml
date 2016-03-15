@@ -4,13 +4,16 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="login_api">https://pasabuy.com/api/authenticate</string>
+    <string name="location_string">Select a location</string>
+    <string name="return_date_string">Select a return date</string>
+    <string name="return_date_hint">YYYY-MM-DD</string>
 
     <string-array name="nav_drawer_items">
-        <item >Profile</item>
-        <item >View Journey</item>
-        <item >Add Journey</item>
-        <item >FAQS</item>
-        <item >Logout</item>
+        <item>Profile</item>
+        <item>View Journey</item>
+        <item>Add Journey</item>
+        <item>FAQS</item>
+        <item>Logout</item>
     </string-array>
 
     <array name="nav_drawer_icons">
@@ -20,4 +23,15 @@
         <item>@drawable/faqs_and_policies</item>
         <item>@drawable/logout</item>
     </array>
+
+    <string-array name="locations">
+        <item>Baguio</item>
+        <item>Manila</item>
+        <item>Cebu</item>
+        <item>Davao</item>
+        <item>Palawan</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

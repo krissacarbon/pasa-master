@@ -1,0 +1,78 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.pasabuy.pasabuy.AddJourney">
+
+    <!-- TODO: Update blank fragment layout -->
+    <!--<TextView android:layout_width="match_parent" android:layout_height="match_parent"-->
+        <!--android:text="@string/hello_blank_fragment"-->
+        <!--android:id="@+id/add_journey_string" />-->
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="56dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp">
+
+            <!--  Location -->
+            <TextView
+                android:id="@+id/spinner_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/location_string" />
+
+            <Spinner
+                android:id="@+id/SpinnerFeedbackType"
+                android:layout_height="wrap_content"
+                android:prompt="@string/location_string"
+                android:layout_width="fill_parent"
+                android:entries="@array/locations">
+            </Spinner>
+
+            <!--  Return Date -->
+            <TextView
+                android:id="@+id/return_date_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/return_date_string" />
+
+            <TextView
+                android:id="@+id/return_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/return_date_hint"
+                android:height="18dp"
+                android:textColor="#ff000000"
+                android:paddingLeft="10dp"/>
+
+            <DatePicker
+                android:id="@+id/dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:datePickerMode="spinner"
+                android:calendarViewShown="false"
+                android:layout_below="@id/return_date_label"/>
+
+
+            <!-- Add Journey Button -->
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_addjourney"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:padding="12dp"
+                android:text="Add Journey"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

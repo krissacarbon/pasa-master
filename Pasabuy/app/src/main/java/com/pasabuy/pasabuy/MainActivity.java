@@ -210,7 +210,7 @@ public class MainActivity extends ActionBarActivity {
                 fragment = new JourneyList();
                 break;
             case 2:
-                //fragment = new FaqsAndPolicies();
+                fragment = new AddJourney();
                 break;
             case 3:
                 //fragment = new Order();
