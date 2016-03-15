@@ -49,7 +49,7 @@ public class MainActivity extends ActionBarActivity {
 
         android.support.v7.app.ActionBar bar = this.getSupportActionBar();
         //for color
-        bar.setBackgroundDrawable(new ColorDrawable(0xCC831515));
+        bar.setBackgroundDrawable(new ColorDrawable(0xCC2F6494));
 
 
 
