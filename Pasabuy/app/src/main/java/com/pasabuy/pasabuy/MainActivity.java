@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.drawable.ColorDrawable;
@@ -216,20 +217,10 @@ public class MainActivity extends ActionBarActivity {
                 break;
             case 4:
                 //fragment = new DeliveryStatus();
+                Intent homeScreen = new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(homeScreen);
+                finish();
                 break;
-            case 5:
-                //fragment = new PaymentStatus();
-                break;
-            case 6:
-                //fragment = new CreditStatus();
-                break;
-            case 7:
-                //fragment = new PurchaseOrder();
-                break;
-            case 8:
-                //fragment = new Logout();
-                break;
-
             default:
                 break;
         }
@@ -246,7 +237,7 @@ public class MainActivity extends ActionBarActivity {
             mDrawerLayout.closeDrawer(mDrawerList);
         } else {
             // error in creating fragment
-            Log.e("MainActivity", "Error in creating fragment");
+            //Log.e("MainActivity", "Error in creating fragment");
         }
     }
 
