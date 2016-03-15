@@ -4,21 +4,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:text="Journeys"/>
+    <!--<TextView-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:gravity="center"-->
+        <!--android:textSize="30dp"-->
+        <!--android:text="Journeys"/>-->
     
 
     <ListView
 		android:id="@+id/journey_list"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:divider="@null"
         android:dividerHeight="0dp"
-        android:clickable="false"
+        android:layout_marginTop="5dp"
 		android:overScrollMode="never"/>
 
 </LinearLayout>

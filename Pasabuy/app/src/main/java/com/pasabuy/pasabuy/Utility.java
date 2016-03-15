@@ -127,7 +127,6 @@ public class Utility {
     private static JSONObject jsonRequest(String urlString, List<Pair<String,String>> params, boolean isPost) throws IOException
     {
         URL url = new URL(urlString);
-        Log.e("RUL", urlString);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setReadTimeout(10000 /* milliseconds */);
         conn.setConnectTimeout(15000 /* milliseconds */);
@@ -135,7 +134,6 @@ public class Utility {
             conn.setRequestMethod("POST");
         }else{
             conn.setRequestMethod("GET");
-            Log.e("this","get");
         }
 
         conn.setDoInput(true);
@@ -153,7 +151,7 @@ public class Utility {
         conn.connect();
 
         JSONObject result = null;
-        Log.e("USI" , conn.getInputStream().toString());
+
         try {
             if(!urlString.contains(GET_JOURNEY_API)) {
                 result = new JSONObject(convertStreamToString(conn.getInputStream()));
@@ -162,9 +160,9 @@ public class Utility {
                 result = new JSONObject();
                 result.put("journey_array",result_temp);
             }
-            Log.e("check",result.toString());
+
         } catch (JSONException e) {
-            Log.e("except", e.getMessage());
+            Log.e("Exception", e.getMessage());
         }
         return result;
     }
@@ -187,6 +185,7 @@ public class Utility {
                 e.printStackTrace();
             }
         }
+
         return sb.toString();
     }
 

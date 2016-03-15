@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
+    android:layout_height="70dp"
     android:background="@android:color/transparent">
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_alignParentLeft="true"
+        android:padding="5dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
-        android:src="@drawable/logo"
+        android:src="@drawable/journey_icon"
         android:layout_centerVertical="true" />
 
     <RelativeLayout
@@ -20,50 +21,32 @@
         android:layout_toRightOf="@+id/icon"
         android:id="@+id/title">
 
-        <TextView android:text="Country :"
-            android:id="@+id/country_tv"
+        <TextView android:text="Location"
+            android:id="@+id/location_tv"
+            android:textSize="18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
+            android:layout_marginTop="10dp"
             android:textColor="@color/list_item_title"/>
 
-        <RelativeLayout
-            android:id="@+id/price_layout"
+        <TextView android:text="Return Date :"
+            android:id="@+id/return_date_tv"
+            android:textSize="18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="10dp">
-
-            <TextView android:text="Return Date :"
-                android:id="@+id/return_date_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:textColor="@color/list_item_title"/>
-
-            <Button android:text="Delete Journey"
-                android:id="@+id/add_to_cart"
-                android:layout_height="20dp"
-                android:textSize="10dp"
-                android:layout_width="wrap_content"
-                android:background="@drawable/custombuttondarkred"
-                android:layout_alignParentRight="true"
-                android:layout_marginBottom="3dp"/>
-        </RelativeLayout>
-        <TextView android:text="City :"
-            android:id="@+id/city_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
             android:layout_alignParentLeft="true"
-            android:layout_above="@id/price_layout"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="8dp"
-            android:padding="8dp"
-            android:textColor="@color/list_item_title"/>
+            android:textColor="@color/oil"/>
+
+        <Button
+            android:id="@+id/del_btn"
+            android:layout_height="37dp"
+            android:layout_width="37dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="10dp"
+            android:layout_alignParentRight="true" />
+
     </RelativeLayout>
 </RelativeLayout>

@@ -206,7 +206,7 @@ public class MainActivity extends ActionBarActivity {
                 fragment = new MainMenu();
                 break;
             case 1:
-                //fragment = new PriceList();
+                fragment = new JourneyList();
                 break;
             case 2:
                 //fragment = new FaqsAndPolicies();
