@@ -12,7 +12,7 @@
         <item>Profile</item>
         <item>View Journey</item>
         <item>Add Journey</item>
-        <item>FAQS</item>
+        <!--<item>FAQS</item>-->
         <item>Logout</item>
     </string-array>
 

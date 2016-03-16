@@ -1,7 +1,5 @@
 package com.pasabuy.pasabuy;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
@@ -15,7 +13,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -79,7 +76,7 @@ public class MainActivity extends ActionBarActivity {
 		// Order
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
 		// Delivery Status
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
+//		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 		// Payment Status
 //		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
 //		// Credit Status
@@ -125,8 +122,8 @@ public class MainActivity extends ActionBarActivity {
             // on first time display view for first nav item
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction()
-                    .replace(R.id.frame_container, new MainMenu()).commit();
-            getSupportActionBar().setTitle("Main Menu");
+                    .replace(R.id.frame_container, new Profile()).commit();
+            getSupportActionBar().setTitle("Profile");
         }
 
     }
@@ -160,41 +157,6 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-    public void menuClick(View v){
-        Fragment fragment = null;
-        String title = "";
-        switch(v.getId()){
-            case R.id.profile_btn:
-                //fragment = new EditProfile();
-                title = "Edit Profile";
-                break;
-            case R.id.order_now_btn:
-                //fragment = new Order();
-                title = "Order Now";
-                break;
-            case R.id.order_history_btn:
-                //fragment = new OrderHistory();
-                title = "Order History";
-                break;
-            case R.id.branch_and_location_btn:
-                //fragment = new Branches();
-                title = "Branches and Location";
-                break;
-            case R.id.notification_btn:
-                //fragment = new Notification();
-                title = "System Notification";
-                break;
-        }
-        if (fragment != null) {
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.frame_container, fragment).addToBackStack("tag").commit();
-            getActionBar().setTitle(title);
-        }else{
-            // error in creating fragment
-            Log.e("MainActivity", "Error in creating fragment");
-        }
-    }
 
     /**
      * Diplaying fragment view for selected nav drawer list item
@@ -204,7 +166,7 @@ public class MainActivity extends ActionBarActivity {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                fragment = new MainMenu();
+                fragment = new Profile();
                 break;
             case 1:
                 fragment = new JourneyList();
@@ -212,10 +174,10 @@ public class MainActivity extends ActionBarActivity {
             case 2:
                 fragment = new AddJourney();
                 break;
-            case 3:
+            case 4:
                 //fragment = new Order();
                 break;
-            case 4:
+            case 3:
                 //fragment = new DeliveryStatus();
                 Intent homeScreen = new Intent(MainActivity.this,LoginActivity.class);
                 startActivity(homeScreen);

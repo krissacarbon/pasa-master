@@ -4,65 +4,76 @@
     android:layout_height="fill_parent"
     android:gravity ="center"
     android:orientation="vertical" >
-	
-	<Button
-	    android:id = "@+id/profile_btn"
-	    android:layout_height= "wrap_content"
-	    android:layout_width = "match_parent"
-	    android:padding="5dp"
-	    android:layout_margin = "10dp"
-	    android:background = "@drawable/custombuttondarkred"
-	    android:text = "Profile"
-	    android:layout_gravity="center"
-	    android:onClick="menuClick"
-	/>
-	
-	<Button
-	    android:id = "@+id/order_now_btn"
-	    android:layout_height= "wrap_content"
-	    android:layout_width = "match_parent"
-	    android:padding="5dp"
-	    android:layout_margin = "10dp"
-	    android:background = "@drawable/custombuttondarkred"
-	    android:text = "Order Now!"
-	    android:layout_gravity="center"
-	    android:onClick="menuClick"
-	/>
-	
-	<Button
-	    android:id = "@+id/order_history_btn"
-	    android:layout_height= "wrap_content"
-	    android:layout_width = "match_parent"
-	    android:padding="5dp"
-	    android:layout_margin = "10dp"
-	    android:background = "@drawable/custombuttondarkred"
-	    android:text = "Order History"
-	    android:layout_gravity="center"
-	    android:onClick="menuClick"
-	/>
-	
-	<Button
-	    android:id = "@+id/branch_and_location_btn"
-	    android:layout_height= "wrap_content"
-	    android:layout_width = "match_parent"
-	    android:padding="5dp"
-	    android:layout_margin = "10dp"
-	    android:background = "@drawable/custombuttondarkred"
-	    android:text = "Branches and Location"
-	    android:layout_gravity="center"
-	    android:onClick="menuClick"
-	/>
-	
-	<Button
-	    android:id = "@+id/notification_btn"
-	    android:layout_height= "wrap_content"
-	    android:layout_width = "match_parent"
-	    android:padding="5dp"
-	    android:layout_margin = "10dp"
-	    android:background = "@drawable/custombuttondarkred"
-	    android:text = "System Notification"
-	    android:layout_gravity="center"
-	    android:onClick="menuClick"
-	/>
+
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:gravity ="left"
+		android:orientation="horizontal">
+		<ImageView
+			android:layout_width="80dp"
+			android:layout_height="80dp"
+			android:layout_margin="20dp"
+			android:src="@drawable/dp"/>
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:gravity="left">
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Username"
+				android:layout_margin="10dp"/>
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Joined"
+				android:layout_margin="10dp"/>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:gravity ="center"
+		android:orientation="horizontal">
+		<ImageView
+			android:layout_width="80dp"
+			android:layout_height="80dp"
+			android:layout_margin="20dp"
+			android:src="@drawable/basket"/>
+		<ImageView
+			android:layout_width="80dp"
+			android:layout_height="80dp"
+			android:layout_margin="20dp"
+			android:src="@drawable/bag"/>
+		<ImageView
+			android:layout_width="80dp"
+			android:layout_height="80dp"
+			android:layout_margin="20dp"
+			android:src="@drawable/heart"/>
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:gravity ="center"
+		android:orientation="horizontal">
+		<ImageView
+			android:layout_width="80dp"
+			android:layout_height="80dp"
+			android:layout_margin="20dp"
+			android:src="@drawable/check"/>
+		<ImageView
+			android:layout_width="80dp"
+			android:layout_height="80dp"
+			android:layout_margin="20dp"
+			android:src="@drawable/man"/>
+		<ImageView
+			android:layout_width="80dp"
+			android:layout_height="80dp"
+			android:layout_margin="20dp"
+			android:src="@drawable/man"/>
+	</LinearLayout>
 
 </LinearLayout>

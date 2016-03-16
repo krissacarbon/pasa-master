@@ -7,14 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class MainMenu extends Fragment {
+public class Profile extends Fragment {
 
-	public MainMenu(){}
+	public Profile(){}
 	
 	@Override
 	public void onStart() {
 		super.onStart();
-		this.getActivity().setTitle("Main Menu");
+		//this.getActivity().setTitle("Main Menu");
 		//getActivity().finish();
 		
 
