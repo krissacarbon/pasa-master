@@ -21,19 +21,34 @@
             android:paddingLeft="24dp"
             android:paddingRight="24dp">
 
-            <!--  Location -->
+            <!--  City -->
             <TextView
-                android:id="@+id/spinner_label"
+                android:id="@+id/spinner_country_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/location_string" />
+                android:text="@string/location_country_string" />
 
             <Spinner
-                android:id="@+id/SpinnerFeedbackType"
+                android:id="@+id/SpinnerFeedbackTypeCity"
                 android:layout_height="wrap_content"
-                android:prompt="@string/location_string"
+                android:prompt="@string/location_city_string"
                 android:layout_width="fill_parent"
-                android:entries="@array/locations">
+                android:entries="@array/countries">
+            </Spinner>
+
+            <!--  City -->
+            <TextView
+                android:id="@+id/spinner_city_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/location_city_string" />
+
+            <Spinner
+                android:id="@+id/SpinnerFeedbackTypeCountry"
+                android:layout_height="wrap_content"
+                android:prompt="@string/location_city_string"
+                android:layout_width="fill_parent"
+                android:entries="@array/cities">
             </Spinner>
 
             <!--  Return Date -->

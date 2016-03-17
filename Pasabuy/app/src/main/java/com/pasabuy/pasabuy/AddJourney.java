@@ -25,7 +25,9 @@ import butterknife.Bind;
 public class AddJourney extends Fragment {
 
     private static String date;
-    private static String location;
+    private static String city;
+    private static String country;
+
 
     public AddJourney() {
 
@@ -54,10 +56,12 @@ public class AddJourney extends Fragment {
         //Get the widgets reference from XML layout
         final TextView tv = (TextView) rootView.findViewById(R.id.return_date);
         DatePicker dp = (DatePicker) rootView.findViewById(R.id.dp);
-        Spinner ls = (Spinner) rootView.findViewById(R.id.SpinnerFeedbackType);
+        Spinner lscountry = (Spinner) rootView.findViewById(R.id.SpinnerFeedbackTypeCountry);
+        Spinner lscity = (Spinner) rootView.findViewById(R.id.SpinnerFeedbackTypeCity);
 
         //get location input
-        location = ls.getSelectedItem().toString();
+        city = lscity.getSelectedItem().toString();
+        country = lscountry.getSelectedItem().toString();
 
         //Display the DatePicker initial date
         String twoDigitMonth = String.format("%02d", month);
@@ -117,7 +121,7 @@ public class AddJourney extends Fragment {
         protected Boolean doInBackground(String... params) {
             boolean add_journey = false;
             try {
-                add_journey = Utility.add_journey(location, "Philippines", date);
+                add_journey = Utility.add_journey(city, country, date);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
