@@ -96,7 +96,7 @@ public class AddJourney extends Fragment {
         //init(int year, int monthOfYear, int dayOfMonth, DatePicker.OnDateChangedListener onDateChangedListener) Initialize the state.
         dp.init(
                 year,
-                month,
+                month-1,
                 dayOfMonth,
                 new DatePicker.OnDateChangedListener() {
 
@@ -159,6 +159,7 @@ public class AddJourney extends Fragment {
             if(result) {
                 Toast.makeText(getActivity().getApplicationContext(), "Journey successfully added!", Toast.LENGTH_LONG).show();
             } else {
+                Toast.makeText(getActivity().getApplicationContext(), "Failed to add journey!", Toast.LENGTH_LONG).show();
             }
             progressDialog.dismiss();
         }

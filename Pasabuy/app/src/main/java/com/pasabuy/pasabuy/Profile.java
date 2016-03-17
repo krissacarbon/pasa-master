@@ -3,6 +3,8 @@ package com.pasabuy.pasabuy;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,10 +63,18 @@ public class Profile extends Fragment {
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		new getProfileTask().execute();
-
+		if(isNetworkConnected()) {
+			new getProfileTask().execute();
+		} else {
+			Toast.makeText(getActivity().getApplicationContext(), "No internet connection!", Toast.LENGTH_LONG).show();
+		}
 	}
 
+	private boolean isNetworkConnected() {
+		ConnectivityManager cm = (ConnectivityManager) this.getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+		return cm.getActiveNetworkInfo() != null;
+	}
 
 	private class getProfileTask extends AsyncTask<Void, Void, Void>
 	{

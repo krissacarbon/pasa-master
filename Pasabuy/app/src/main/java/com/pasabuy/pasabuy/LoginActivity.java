@@ -4,6 +4,8 @@ package com.pasabuy.pasabuy;
  * Created by Krissa on 18/02/2016.
  */
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -99,7 +101,12 @@ public class LoginActivity extends AppCompatActivity {
 //        progressDialog.show();
 
         // TODO: Implement your own authentication logic here.
-        new LoginTask().execute();
+        if (isNetworkConnected()) {
+            new LoginTask().execute();
+        } else {
+            _loginButton.setEnabled(true);
+            Toast.makeText(this.getApplicationContext(), "No internet connection!", Toast.LENGTH_LONG).show();
+        }
 //        new android.os.Handler().postDelayed(
 //                new Runnable() {
 //                    public void run() {
@@ -128,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onBackPressed() {
         // Disable going back to the MainActivity
         super.onBackPressed();
-//        moveTaskToBack(true);
+        //moveTaskToBack(true);
     }
 
     public void onLoginSuccess() {
@@ -165,6 +172,12 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return valid;
+    }
+
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null;
     }
 
     private class LoginTask extends AsyncTask<String, Void, Boolean> {

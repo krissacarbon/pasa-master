@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -15,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,11 +61,22 @@ public class JourneyList extends Fragment {
 
     }
 
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) this.getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null;
+    }
+
     @Override
     public void onResume() {
         // TODO Auto-generated method stub
         super.onResume();
-        new getJourneyTask().execute();
+        if(this.isNetworkConnected()) {
+            new getJourneyTask().execute();
+        }
+        else{
+            Toast.makeText(getActivity().getApplicationContext(), "No internet connection!", Toast.LENGTH_LONG).show();
+        }
 
     }
 
@@ -174,34 +187,36 @@ public class JourneyList extends Fragment {
             }
 
             JSONArray spi = null;
-            try {
-                spi = json.getJSONArray("journey_array");
-            } catch (JSONException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-            for (int i = 0; i < spi.length(); i++){
+            if(null!=json) {
                 try {
-                    JSONObject c = spi.getJSONObject(i);
-                    JSONObject location = c.getJSONObject("locationDescription");
-
-                    long returnSeconds = Long.valueOf(c.getString("returnDate")).longValue();
-                    Date date = new Date((returnSeconds));
-
-                    String country = location.getString("country");
-                    String city = location.getString("city");
-                    String returnDate = JourneyList.this.df.format(date);
-                    String journeyId = c.getString("id");
-
-                    JourneyObject jo = new JourneyObject(country,city,returnDate,journeyId);
-
-                    JourneyList.this.mJourneys.add(jo);
+                    spi = json.getJSONArray("journey_array");
                 } catch (JSONException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
 
+                for (int i = 0; i < spi.length(); i++) {
+                    try {
+                        JSONObject c = spi.getJSONObject(i);
+                        JSONObject location = c.getJSONObject("locationDescription");
+
+                        long returnSeconds = Long.valueOf(c.getString("returnDate")).longValue();
+                        Date date = new Date((returnSeconds));
+
+                        String country = location.getString("country");
+                        String city = location.getString("city");
+                        String returnDate = JourneyList.this.df.format(date);
+                        String journeyId = c.getString("id");
+
+                        JourneyObject jo = new JourneyObject(country, city, returnDate, journeyId);
+
+                        JourneyList.this.mJourneys.add(jo);
+                    } catch (JSONException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+
+                }
             }
 
 
