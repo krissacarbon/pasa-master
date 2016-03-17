@@ -10,6 +10,7 @@ import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -56,12 +57,36 @@ public class AddJourney extends Fragment {
         //Get the widgets reference from XML layout
         final TextView tv = (TextView) rootView.findViewById(R.id.return_date);
         DatePicker dp = (DatePicker) rootView.findViewById(R.id.dp);
-        Spinner lscountry = (Spinner) rootView.findViewById(R.id.SpinnerFeedbackTypeCountry);
-        Spinner lscity = (Spinner) rootView.findViewById(R.id.SpinnerFeedbackTypeCity);
+        final Spinner lscountry = (Spinner) rootView.findViewById(R.id.SpinnerFeedbackTypeCountry);
+        final Spinner lscity = (Spinner) rootView.findViewById(R.id.SpinnerFeedbackTypeCity);
 
         //get location input
         city = lscity.getSelectedItem().toString();
         country = lscountry.getSelectedItem().toString();
+
+        lscountry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                country = lscountry.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        lscity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                city = lscity.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         //Display the DatePicker initial date
         String twoDigitMonth = String.format("%02d", month);
