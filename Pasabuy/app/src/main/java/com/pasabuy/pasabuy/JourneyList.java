@@ -191,7 +191,7 @@ public class JourneyList extends Fragment {
 
                     String country = location.getString("country");
                     String city = location.getString("city");
-                    String returnDate = df.format(date);
+                    String returnDate = JourneyList.this.df.format(date);
                     String journeyId = c.getString("id");
 
                     JourneyObject jo = new JourneyObject(country,city,returnDate,journeyId);

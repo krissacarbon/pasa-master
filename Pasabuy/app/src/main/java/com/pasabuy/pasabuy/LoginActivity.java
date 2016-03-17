@@ -75,6 +75,13 @@ public class LoginActivity extends AppCompatActivity {
 //        });
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        //Clear cookies
+        LoginActivity.this.mCookieManager.getCookieStore().removeAll();
+    }
+
     public void login() {
         Log.d(TAG, "Login");
 
@@ -120,7 +127,8 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // Disable going back to the MainActivity
-        moveTaskToBack(true);
+        super.onBackPressed();
+//        moveTaskToBack(true);
     }
 
     public void onLoginSuccess() {
@@ -194,10 +202,6 @@ public class LoginActivity extends AppCompatActivity {
             }
             progressDialog.dismiss();
         }
-
-
     }
-
-
 }
 

@@ -7,12 +7,81 @@
     <string name="location_string">Select a location</string>
     <string name="return_date_string">Select a return date</string>
     <string name="return_date_hint">YYYY-MM-DD</string>
+    <string name="FAQ">
+<b>1. What is Pasabuy?</b>\n\n
+
+\t\tPasabuy is a mobile marketplace for travelers and non-travelers that makes acquisition of local items beneficial to both parties. Travelers can earn from their trip by buying items for non-travelers. While non-travelers can conveniently wait for their requested product without having to pay for the trip nor paying for hefty provincial/overseas shipping fees.\n\n
+
+\t\tOur vision is to make every travel economical. As frequent (and budget) travelers ourselves, our mission is to help build a community that maximize each travel experience by supporting local products, bringing and sharing those stuff with non-travelers and utilizing every baggage allowances.\n\n
+
+\t\tRequest or recommend any non-local product by simply posting in the web application today!\n\n
+
+<b>2. How does Pasabuy work?</b>\n\n
+
+Non-traveler/ Requester\n\n
+
+a. \"Request\" for an item that you want from another city or province. Remember to provide a photo of the item for easier identification. Provide description and price you are "Willing to Pay" to the Pasabuy traveler.\n\n
+
+b. Once posted, other users will be able to see and comment on your request. Sit back and relax until traveler/s \"Offer\" to buy your item.\n\n
+
+c. \"Accept\" if you\'re satisfied with the offer.\n\n
+
+d. \"Pay\" to seal the deal. Note: at this point, you will be prompted to make payment to Pasabuy and you won\'t be able to back out of the deal.\n\n
+
+e. In the event that the traveler is unable to render the service within 7 days upon published return date, a 100% refund will be credited back to your account.\n\n
+
+f. Similarly, if there\'s no dispute or feedback from you within the 7 days upon published delivery date, Pasabuy will proceed with crediting payment to the traveler\'s account.\n\n
+
+Traveler\n\n
+
+a. \"Add Journey\" to inform Pasabuy users about your upcoming trip destination and return date.\n\n
+
+b. Either \"Recommend\" local products you\'re willing to bring back or \"Offer\" to buy requested item/s available in your destination.\n\n
+
+c. Once a requester accepts and proceeds to pay for your recommendation or offer, you may already start procuring the item. Note: you should be comfortable with the item that you\'d be bringing back and be sure that it is allowed in your destination. If you have doubts or if the item is out of stock, you may cancel the transaction however, do this sparingly as you may incur penalty for more than 5 cancellations.\n\n
+
+The transaction within agreed timeline via agreed mode - either via meet up or courier delivery service. Prompt requestor to \"Confirm Delivery\" within 7 days otherwise, any dispute will no longer be entertained.\n\n
+
+d. Check your account info, you should have the agreed $ for your fulfilled service.\n\n
+
+The Pasabuy Guarantee\n\n
+
+\t\tYour payment will be held by Pasabuy until the traveller renders the service within 7 days upon return date published. Only after that timeline will Pasabuy release the payment to the traveller\'s account. In case of any dispute i.e. counterfeit item or item significantly not as agreed, please contact us via email or call and we will immediately look into that matter.\n\n
+
+<b>3. What are the shipping and other charges in Pasabuy?</b>\n\n
+
+\t\tPasabuy recommends traveler to ship the items thru Xendph. The traveler can drop off the items to selected 7-Eleven branch around Metro Manila. First, he/she must open an account with Xend at www.xend.com.ph by clicking on the \"Sign Up for a Free myXend Account\" button. You can also book your \"pickups\" on the go, by downloading the Xend Mobile App, available for both Android and iOS.\n\n
+
+\t\tThe traveler must book a \"pickup\" once the account has been created. This \"pickup\" will be presented to the 7-Eleven counter before payment. The list of selected 7-Eleven branches can be found at new.xend.com.ph/7-eleven . For additional information, visit Xendph FAQ at new.xend.com.ph/faq .\n\n
+
+\t\tThe traveler must drop the items before 4:00 pm for same day delivery. The item will be picked up on the next day if dropped after 4:00 pm.\n\n
+
+\t\tShipping of small items (9\" x 14\") would cost Php 59 and shipping of large items (12\" x 18\") would cost Php 79.\n\n
+
+\t\tPasabuy also charges Php 25 per transaction to admin cost.\n\n
+
+<b>4. How would a traveler know the requester\'s contact number and shipping address?</b>\n\n
+
+\t\tOnce the requester paid for the products thru our payment system, the traveler would immediately see the requester\'s contact number and shipping address on the product page. It is very important for the requester to update his/her contact number and address on the profile page.\n\n
+
+<b>5. What payment options do you support?</b>\n\n
+
+\t\tWe are currently supporting online banking, Over-the-Counter/ATM, Over-the-Counter (Non-bank), Globe Gcash, Smart money and many others thru Dragonpay payment system. No cash dealings are allowed to prevent any fraud or disputes due to lack of accountability between the two parties.\n\n
+
+<b>6. Any tips for Requesters?</b>\n\n
+
+\t\tIn order to attract travelers to buy requested items for you, you must be willing to pay for a higher price for the traveler to earn more. Take note that it one of their incentives aside from wanting to help people get their desired products. You need to consider the time and effort required to purchase the items.\n\n
+
+<b>7. Any tips for Travelers?</b>\n\n
+
+\t\tKeep the receipts and take pictures of the item to prevent disputes. Do not buy any illegal items such as drugs and counterfeit products. Communicate with the requester at all times. Keep safe!\n
+    </string>
 
     <string-array name="nav_drawer_items">
         <item>Profile</item>
         <item>View Journey</item>
         <item>Add Journey</item>
-        <!--<item>FAQS</item>-->
+        <item>FAQS</item>
         <item>Logout</item>
     </string-array>
 
