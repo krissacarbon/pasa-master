@@ -30,7 +30,7 @@ public class Utility {
     private static final String DELETE_JOURNEY_API =  "https://pasabuy.com/api/journey/delete/";
     private static final String GET_JOURNEY_API =  "https://pasabuy.com/api/journey/display/";
     private static final String GET_USER_API =  "https://pasabuy.com/api/user/display/";
-
+    private static final String SEARCH_API = "https://pasabuy.com/api/search/";
 
     public static boolean login(String user_name, String password) throws JSONException {
         List<Pair<String,String>> params = new ArrayList<>();
@@ -123,6 +123,24 @@ public class Utility {
         }else {
             return new JSONObject("JSON is null");
         }
+    }
+
+    public static JSONObject search_api(List<Pair<String,String>> search_params ) throws JSONException {
+        List<Pair<String,String>> params = search_params;
+
+        JSONObject result = null;
+        try {
+            result = jsonRequest(SEARCH_API, params, true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if(result != null ) {
+            return result;
+        }else {
+            return new JSONObject("JSON is null");
+        }
+
     }
     private static JSONObject jsonRequest(String urlString, List<Pair<String,String>> params, boolean isPost) throws IOException
     {
