@@ -2,21 +2,34 @@ package com.pasabuy.pasabuy;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.util.Pair;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Krissa on 18/02/2016.
@@ -38,12 +51,12 @@ public class MainActivity extends ActionBarActivity {
 
     private ArrayList<NavDrawerItem> navDrawerItems;
     private NavDrawerListAdapter adapter;
+    private ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         android.support.v7.app.ActionBar bar = this.getSupportActionBar();
         //for color
@@ -72,6 +85,7 @@ public class MainActivity extends ActionBarActivity {
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
 		// Payment Status
 //		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
 //		// Credit Status
@@ -136,7 +150,6 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // toggle nav drawer on selecting action bar app icon/title
@@ -145,8 +158,6 @@ public class MainActivity extends ActionBarActivity {
         }
         // Handle action bar actions click
         switch (item.getItemId()) {
-            case R.id.action_settings:
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -170,9 +181,12 @@ public class MainActivity extends ActionBarActivity {
                 fragment = new AddJourney();
                 break;
             case 3:
-                fragment = new FAQ();
+                fragment = new SearchView();
                 break;
             case 4:
+                fragment = new FAQ();
+                break;
+            case 5:
                 //fragment = new DeliveryStatus();
                 Intent homeScreen = new Intent(MainActivity.this,LoginActivity.class);
                 startActivity(homeScreen);
@@ -221,6 +235,77 @@ public class MainActivity extends ActionBarActivity {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //new getLocationAndCategoryTask().execute();
+    }
+
+    private class getLocationAndCategoryTask extends AsyncTask<Void, Void, Void>
+    {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //this method will be running on UI thread
+            if (null == MainActivity.this.mProgressDialog) {
+                MainActivity.this.mProgressDialog = new ProgressDialog(MainActivity.this);
+            }
+
+            if(!(MainActivity.this.mProgressDialog.isShowing())) {
+                MainActivity.this.mProgressDialog.setMessage("\tLoading...");
+                MainActivity.this.mProgressDialog.show();
+            }
+        }
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            List<Pair<String,String>> search_params = new ArrayList<>();
+
+            JSONArray productList = new JSONArray();
+            JSONArray productLiked = new JSONArray();
+
+//            MainActivity.this.mEditor.putString("Locations",jsonLocation.toString());
+//            MainActivity.this.mEditor.commit();
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            //this method will be running on UI thread
+
+            if ( MainActivity.this.mProgressDialog.isShowing() ) {
+                MainActivity.this.mProgressDialog.dismiss();
+            }
+        }
+    }
+
+    public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
+        }
     }
 
 }

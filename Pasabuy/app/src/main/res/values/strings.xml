@@ -82,6 +82,7 @@ The Pasabuy Guarantee\n\n
         <item>Profile</item>
         <item>View Journey</item>
         <item>Add Journey</item>
+        <item>Search</item>
         <item>FAQS</item>
         <item>Logout</item>
     </string-array>
@@ -90,6 +91,7 @@ The Pasabuy Guarantee\n\n
         <item>@drawable/edit_profile</item>
         <item>@drawable/calendar</item>
         <item>@drawable/add</item>
+        <item>@drawable/calendar</item>
         <item>@drawable/faqs_and_policies</item>
         <item>@drawable/logout</item>
     </array>

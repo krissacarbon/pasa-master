@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:background="@android:color/transparent">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentLeft="true"
+        android:padding="15dp"
+        android:src="@drawable/journey_icon"
+        android:layout_centerVertical="true" />
+
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@+id/icon"
+        android:id="@+id/title">
+
+        <TextView android:text="Item"
+            android:id="@+id/item_name_tv"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/list_item_title"/>
+
+        <TextView android:text="Seller"
+            android:id="@+id/user_name_tv"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_name_tv"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/list_item_title"/>
+
+        <TextView android:text="Willing to sell for Price"
+            android:id="@+id/item_price_tv"
+            android:textSize="16dp"
+            android:layout_below="@id/user_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/list_item_title"/>
+
+        <TextView android:text="TAG :"
+            android:id="@+id/tag_tv"
+            android:textSize="20dp"
+            android:layout_margin="15dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/oil"/>
+
+        <ImageView
+            android:id="@+id/heart_image"
+            android:background="@drawable/heart"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:layout_margin="10dp"
+            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true" />
+
+    </RelativeLayout>
+</RelativeLayout>
