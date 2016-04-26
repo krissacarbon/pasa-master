@@ -43,7 +43,6 @@
             <Spinner
                 android:id="@+id/SpinnerFeedbackTypeLocation"
                 android:layout_height="wrap_content"
-                android:prompt="@string/location_city_string"
                 android:layout_width="fill_parent"
                 android:spinnerMode="dropdown">
             </Spinner>
@@ -58,7 +57,6 @@
             <Spinner
                 android:id="@+id/SpinnerFeedbackTypeCategory"
                 android:layout_height="wrap_content"
-                android:prompt="@string/location_city_string"
                 android:layout_width="fill_parent"
                 android:spinnerMode="dropdown">
             </Spinner>
@@ -95,26 +93,13 @@
                 android:layout_height="wrap_content"
                 android:text= "Product Type" />
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+            <Spinner
+                android:id="@+id/SpinnerFeedbackTypeProduct"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <RadioButton android:id="@+id/radio_all"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="All"
-                    />
-                <RadioButton android:id="@+id/radio_recommendations"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Recommendations"
-                    />
-                <RadioButton android:id="@+id/radio_requests"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Requests"
-                    />
-            </RadioGroup>
+                android:layout_width="fill_parent"
+                android:entries="@array/product_types"
+                android:spinnerMode="dropdown">
+            </Spinner>
             <!-- Add Journey Button -->
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btn_submit_search"
@@ -122,10 +107,18 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="5dp"
                 android:padding="12dp"
                 android:text="Search"/>
 
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_cancel"
+                android:textAlignment="center"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:padding="12dp"
+                android:text="Cancel"/>
 
         </LinearLayout>
     </ScrollView>

@@ -1,5 +1,7 @@
 package com.pasabuy.pasabuy;
 
+import android.util.Log;
+
 public class ProductObject {
     private String mName="";
     private String mTag="";
@@ -7,6 +9,8 @@ public class ProductObject {
     private String mPrice="";
     private String mImageUrl="";
     private String mProductId="";
+    private boolean mLiked = false;
+    private boolean mRequest = false;
 
     public ProductObject(String name, String tag, String imageUrl, String seller, String price, String pId){
         mName = name;
@@ -34,6 +38,17 @@ public class ProductObject {
     public void setProductId(String pId){
         mProductId = pId;
     }
+    public void setmRequest(String request){
+        if ( request.equalsIgnoreCase("REQUEST") ) {
+            mRequest = true;
+        } else {
+            mRequest = false;
+        }
+    }
+    public void setLiked(boolean liked)
+    {
+        mLiked = liked;
+    }
 
     public String getName(){
         return mName;
@@ -53,5 +68,9 @@ public class ProductObject {
     public String getProductId(){
         return mProductId;
     }
+    public boolean getRequest() {
+        return mRequest;
+    }
+    public boolean getLiked(){return mLiked;}
 
 }

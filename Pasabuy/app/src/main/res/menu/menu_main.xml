@@ -3,6 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
     <item android:id="@+id/action_search" android:title="Search"
         android:orderInCategory="100"
-        android:icon="@drawable/check"
+        android:icon="@drawable/search"
         app:showAsAction="always" />
 </menu>

@@ -1,0 +1,90 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.pasabuy.pasabuy.AddJourney">
+
+    <!-- TODO: Update blank fragment layout -->
+    <!--<TextView android:layout_width="match_parent" android:layout_height="match_parent"-->
+        <!--android:text="@string/hello_blank_fragment"-->
+        <!--android:id="@+id/add_journey_string" />-->
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="56dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id = "@+id/avatar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src = "@drawable/dp"/>
+                <TextView
+                    android:id="@+id/username_product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/avatar"
+                    android:layout_margin="5dp"
+                    android:text="Seller " />
+            </RelativeLayout>
+            <ImageView
+                android:id="@+id/product_image"
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/logo"
+                android:text= "Search Keyword:" />
+            <TextView
+                android:id="@+id/product_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text = "TITLE"/>
+
+            <!--<TextView-->
+                <!--android:id="@+id/product_type"-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:text = "TYPE"/>-->
+            <!--<TextView-->
+                <!--android:id="@+id/product_price"-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:text = "Price"/>-->
+            <!--<TextView-->
+                <!--android:id="@+id/product_description"-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:text = "Description"/>-->
+            <!--<TextView-->
+                <!--android:id="@+id/product_location"-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:text = "location"/>-->
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_cancel_dialog"
+                android:textAlignment="center"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:padding="12dp"
+                android:text="Cancel"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

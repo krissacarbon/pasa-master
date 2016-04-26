@@ -82,7 +82,7 @@ The Pasabuy Guarantee\n\n
         <item>Profile</item>
         <item>View Journey</item>
         <item>Add Journey</item>
-        <item>Search</item>
+        <item>Product</item>
         <item>FAQS</item>
         <item>Logout</item>
     </string-array>
@@ -91,7 +91,7 @@ The Pasabuy Guarantee\n\n
         <item>@drawable/edit_profile</item>
         <item>@drawable/calendar</item>
         <item>@drawable/add</item>
-        <item>@drawable/calendar</item>
+        <item>@drawable/product</item>
         <item>@drawable/faqs_and_policies</item>
         <item>@drawable/logout</item>
     </array>
@@ -102,6 +102,12 @@ The Pasabuy Guarantee\n\n
         <item>Cebu</item>
         <item>Davao</item>
         <item>Palawan</item>
+    </string-array>
+
+    <string-array name="product_types">
+        <item>ALL</item>
+        <item>RECOMMEND</item>
+        <item>REQUEST</item>
     </string-array>
 
     <string-array name="countries">
