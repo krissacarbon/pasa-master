@@ -240,7 +240,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public void onResume() {
         super.onResume();
-        //new getLocationAndCategoryTask().execute();
+//        new getLocationAndCategoryTask().execute();
     }
 
     private class getLocationAndCategoryTask extends AsyncTask<Void, Void, Void>
@@ -255,6 +255,7 @@ public class MainActivity extends ActionBarActivity {
 
             if(!(MainActivity.this.mProgressDialog.isShowing())) {
                 MainActivity.this.mProgressDialog.setMessage("\tLoading...");
+                MainActivity.this.mProgressDialog.setCancelable(false);
                 MainActivity.this.mProgressDialog.show();
             }
         }
@@ -262,7 +263,6 @@ public class MainActivity extends ActionBarActivity {
         protected Void doInBackground(Void... params) {
 
             List<Pair<String,String>> search_params = new ArrayList<>();
-
             JSONArray productList = new JSONArray();
             JSONArray productLiked = new JSONArray();
 

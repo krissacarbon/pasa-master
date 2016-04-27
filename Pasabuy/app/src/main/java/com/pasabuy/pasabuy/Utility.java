@@ -183,7 +183,7 @@ public class Utility {
         try {
             result = jsonRequest(GET_PRODUCT+productId,null,false);
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e("getProdIOEX",e.getMessage());
         }
 
         if(result != null ) {
@@ -223,7 +223,8 @@ public class Utility {
         JSONObject result = null;
 
         try {
-            if(!urlString.contains(GET_JOURNEY_API) && !urlString.contains(GET_ALL_CATEGORY) && !urlString.contains(GET_ALL_LOCATION) && !urlString.contains(GET_PRODUCT)) {
+            if(!urlString.contains(GET_JOURNEY_API) && !urlString.contains(GET_ALL_CATEGORY) && !urlString.contains(GET_ALL_LOCATION)) {
+                Log.e("URL",urlString);
                 result = new JSONObject(convertStreamToString(conn.getInputStream()));
             }else{
                 JSONArray result_temp = new JSONArray(convertStreamToString(conn.getInputStream()));

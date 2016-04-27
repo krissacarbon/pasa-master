@@ -171,6 +171,7 @@ public class JourneyList extends Fragment {
 
             if(!(JourneyList.this.mProgressDialog.isShowing())) {
                 JourneyList.this.mProgressDialog.setMessage("\tLoading...");
+                JourneyList.this.mProgressDialog.setCancelable(false);
                 JourneyList.this.mProgressDialog.show();
             }
         }

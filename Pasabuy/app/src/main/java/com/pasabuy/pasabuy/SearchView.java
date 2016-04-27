@@ -2,6 +2,7 @@ package com.pasabuy.pasabuy;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -30,6 +31,7 @@ import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class SearchView extends Fragment {
@@ -43,6 +45,7 @@ public class SearchView extends Fragment {
     private ArrayList<String> aLocations = new ArrayList<String>();
     private JSONArray mCategories;
     private ArrayList<String> aCategories = new ArrayList<String>();
+    private HashMap<String,JSONObject> mSellers = new HashMap<String, JSONObject>();
 
     public SearchView() {
 
@@ -52,6 +55,8 @@ public class SearchView extends Fragment {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        new SearchTask(this.params).execute();
+
     }
 
     @Override
@@ -132,7 +137,12 @@ public class SearchView extends Fragment {
     @Override
     public void onResume(){
         super.onResume();
-        new SearchTask(this.params).execute();
+        //new SearchTask(this.params).execute();
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
     }
 
     public void Search(){
@@ -164,6 +174,7 @@ public class SearchView extends Fragment {
 
             if(!(SearchView.this.mProgressDialog.isShowing())) {
                 SearchView.this.mProgressDialog.setMessage("\tLoading...");
+                SearchView.this.mProgressDialog.setCancelable(false);
                 SearchView.this.mProgressDialog.show();
             }
         }
@@ -189,17 +200,45 @@ public class SearchView extends Fragment {
                     }
 
                     for ( int i = 0 ; i < productList.length() ; i++ ) {
+
                         JSONObject jo = productList.getJSONObject(i);
+
+//                        String seller = "";
+//                        String sellerImage = "";
+//                        if ( jo.get("createdBy") instanceof JSONObject ) {
+//                            JSONObject temp = jo.getJSONObject("createdBy");
+//                            Log.e("temo",temp.toString());
+//                            SearchView.this.mSellers.put(temp.getString("@id"),temp);
+//                            seller = temp.getString("name");
+//                            sellerImage = temp.getString("accountImageUrl");
+//                        } else {
+//                            Log.e("TAG", jo.getString("createdBy")+"NE "+SearchView.this.mSellers.values().toString());
+//                            JSONObject temp = SearchView.this.mSellers.get(jo.getString("createdBy"));
+//                            if ( null!= temp ) {
+//                                seller = temp.getString("name");
+//                                sellerImage = temp.getString("accountImageUrl");
+//                            } else {
+//                                seller = "none";
+//                                sellerImage = "none";
+//                            }
+//                        }
+
                         String name = jo.getString("title");
                         String tag = jo.getString("status");
+                        String description = jo.getString("description");
+                        String city = jo.getJSONObject("userPlace").getJSONObject("locationDescription").getString("city");
+                        String country = jo.getJSONObject("userPlace").getJSONObject("locationDescription").getString("country");
                         String price = jo.getJSONArray("productPriceRules").getJSONObject(0).getString("listedPrice");
                         String type = jo.getString("type");
                         String imageUrl = jo.getJSONArray("imageDescriptions").getJSONObject(0).getString("url");
                         String pid = jo.getString("id");
 
-                        ProductObject po = new ProductObject(name,tag,imageUrl,"","",pid);
-                        po.setPrice(price);
-                        po.setmRequest(type);
+                        ProductObject po = new ProductObject(name,tag,imageUrl,price,pid);
+//                        po.setSeller(seller);
+//                        po.setSellerImage(sellerImage);
+                        po.setDescription(description);
+                        po.setLocation(city,country);
+                        po.setRequest(type);
                         if (liked.contains(pid)) {
                             po.setLiked(true);
                         }else{
@@ -235,35 +274,22 @@ public class SearchView extends Fragment {
                 nameTextView.setText(item.getName());
                 tagTextView.setText(item.getTag());
 
-                if ( item.getRequest() ) {
+                if ( item.getRequestBool() ) {
                     priceTextView.setText("Price is around Php" + item.getPrice());
                 } else {
                     priceTextView.setText("Willing to sell for Php" + item.getPrice());
                 }
 
                 if ( !item.getLiked() ) {
-                    layout.findViewById(R.id.heart_layout).setVisibility(View.GONE);
+                    ((ImageView) layout.findViewById(R.id.heart_image)).setImageDrawable(SearchView.this.getResources().getDrawable(R.drawable.heart_white));
                 }
 
                 layout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        final Dialog dialog = new Dialog(SearchView.this.getActivity());
-                        dialog.setContentView(R.layout.product_dialog);
-                        dialog.setTitle(item.getName());
-
-                        ((TextView)dialog.findViewById(R.id.product_title)).setText(item.getName());
-                        Button cancelButton = (Button) dialog.findViewById(R.id.btn_cancel_dialog);
-                        cancelButton.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                dialog.dismiss();
-                            }
-                        });
-
-                        dialog.setCancelable(true);
-                        dialog.show();
-                        dialog.getWindow().setLayout(AbsoluteLayout.LayoutParams.FILL_PARENT, AbsoluteLayout.LayoutParams.FILL_PARENT);
+                        Intent productView = new Intent(SearchView.this.getActivity(),ProductItemView.class);
+                        productView.putExtra("prodId", item.getProductId());
+                        startActivity(productView);
                     }
                 });
 
@@ -285,6 +311,47 @@ public class SearchView extends Fragment {
                     for ( int i = 0; i < SearchView.this.mCategories.length() ; i++ ) {
                         String locString = SearchView.this.mCategories.getJSONObject(i).getString("name");
                         SearchView.this.aCategories.add(locString);
+                    }
+                }
+
+                if ( SearchView.this.mData.has("searchInput") ) {
+                    JSONObject temp = SearchView.this.mData.getJSONObject("searchInput");
+                    final TextView current = (TextView) SearchView.this.getView().findViewById(R.id.current);
+                    TextView total = (TextView) SearchView.this.getView().findViewById(R.id.total);
+                    final int currentPage = temp.getInt("pageNumber");
+                    int totalPages = temp.getInt("pageCount");
+                    current.setText(currentPage+"");
+                    total.setText(totalPages+"");
+
+                    if ( (currentPage -1) > 0 ) {
+                        ImageView arrowLeft = (ImageView)SearchView.this.getView().findViewById(R.id.left);
+                        arrowLeft.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                List<Pair<String,String>> pageParams = new ArrayList<Pair<String, String>>(SearchView.this.params);
+                                pageParams.add(new Pair<>("pageNumber", (currentPage-1)+""));
+                                new SearchTask(pageParams).execute();
+                            }
+                        });
+                    } else {
+                        ImageView arrowLeft = (ImageView)SearchView.this.getView().findViewById(R.id.left);
+                        arrowLeft.setOnClickListener(null);
+                    }
+
+                    if ( (currentPage + 1) <= totalPages ) {
+                        ImageView arrowRight = (ImageView)SearchView.this.getView().findViewById(R.id.right);
+                        arrowRight.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                List<Pair<String,String>> pageParams = new ArrayList<Pair<String, String>>(SearchView.this.params);
+                                pageParams.add(new Pair<>("pageNumber", (currentPage+1)+""));
+                                new SearchTask(pageParams).execute();
+                            }
+                        });
+
+                    } else {
+                        ImageView arrowRight = (ImageView)SearchView.this.getView().findViewById(R.id.right);
+                        arrowRight.setOnClickListener(null);
                     }
                 }
             } catch (JSONException e) {
