@@ -191,6 +191,8 @@ public class AddJourney extends Fragment {
                 if (AddJourney.this.mData.has("locations")) {
                     AddJourney.this.mLocations = AddJourney.this.mData.getJSONArray("locations");
                     //AddJourney.this.aCity.add("Anywhere");
+                    AddJourney.this.aCity.add("");
+                    AddJourney.this.aCountry.add("");
                     for ( int i = 0; i < AddJourney.this.mLocations.length() ; i++ ) {
                         //String locString = (AddJourney.this.mLocations.getJSONObject(i).getString("city")+" " +SearchView.this.mLocations.getJSONObject(i).getString("country")).trim();
                         if(!AddJourney.this.aCity.contains(AddJourney.this.mLocations.getJSONObject(i).getString("city").trim())) {
