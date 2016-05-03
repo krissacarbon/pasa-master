@@ -122,7 +122,7 @@ public class JourneyList extends Fragment {
 
             JourneyObject item = getItem(position);
 
-            viewHolder.locationTextView.setText(item.getCity()+", "+item.getCountry());
+            viewHolder.locationTextView.setText((item.getCity()+" "+item.getCountry()).trim());
             viewHolder.returnTextView.setText(item.getReturnDate());
             viewHolder.deleteButton.setTag(item.getJourneyId());
             viewHolder.deleteButton.setOnClickListener(new View.OnClickListener() {

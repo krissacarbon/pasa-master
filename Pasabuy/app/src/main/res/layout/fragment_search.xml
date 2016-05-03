@@ -31,18 +31,20 @@
                 android:orientation="vertical"
                 android:layout_width="1dp"
                 android:layout_weight="1"
-                android:padding="5dp"
-                android:layout_gravity="top"
-                android:gravity="top"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_gravity="top|center"
+                android:gravity="top|center"
                 android:layout_height="wrap_content"></LinearLayout>
             <LinearLayout
                 android:id="@+id/right_ll"
                 android:layout_weight="1"
                 android:layout_width="1dp"
-                android:padding="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:orientation="vertical"
-                android:layout_gravity="top"
-                android:gravity="top"
+                android:layout_gravity="top|center"
+                android:gravity="top|center"
                 android:layout_height="wrap_content"></LinearLayout>
         </LinearLayout>
 
