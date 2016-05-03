@@ -290,8 +290,8 @@ public class SearchView extends Fragment {
                     priceTextView.setText("Willing to sell for PHP " + item.getPrice());
                 }
 
-                if ( !item.getLiked() ) {
-                    ((ImageView) layout.findViewById(R.id.heart_image)).setImageDrawable(SearchView.this.getResources().getDrawable(R.drawable.heart_white));
+                if ( item.getLiked() ) {
+                    ((ImageView) layout.findViewById(R.id.heart_image)).setImageDrawable(SearchView.this.getResources().getDrawable(R.drawable.heart_red));
                 }
 
                 layout.setOnClickListener(new View.OnClickListener() {
@@ -319,14 +319,20 @@ public class SearchView extends Fragment {
                 nameTextView.setText(item.getName());
                 tagTextView.setText(item.getTag());
 
+                if ( item.getTag().equalsIgnoreCase("OPEN") ) {
+                    tagTextView.setTextColor(Color.BLUE);
+                } else {
+                    tagTextView.setTextColor(Color.RED);
+                }
+
                 if ( item.getRequestBool() ) {
                     priceTextView.setText("Price is around PHP " + item.getPrice());
                 } else {
                     priceTextView.setText("Willing to sell for PHP " + item.getPrice());
                 }
 
-                if ( !item.getLiked() ) {
-                    ((ImageView) layout.findViewById(R.id.heart_image)).setImageDrawable(SearchView.this.getResources().getDrawable(R.drawable.heart_white));
+                if ( item.getLiked() ) {
+                    ((ImageView) layout.findViewById(R.id.heart_image)).setImageDrawable(SearchView.this.getResources().getDrawable(R.drawable.heart_red));
                 }
 
                 layout.setOnClickListener(new View.OnClickListener() {
