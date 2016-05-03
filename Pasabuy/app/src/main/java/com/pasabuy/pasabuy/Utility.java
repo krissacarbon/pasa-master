@@ -64,10 +64,10 @@ public class Utility {
         try {
             result = jsonRequest(ADD_JOURNEY_API,params,true);
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e("Exception", e.getMessage());
         }
 
-        if(result != null && result.has("status") && "OK".equalsIgnoreCase(result.getString("status"))) {
+        if(result != null /*&& result.has("status") && "OK".equalsIgnoreCase(result.getString("status"))*/) {
             return true;
         }else {
             return false;
