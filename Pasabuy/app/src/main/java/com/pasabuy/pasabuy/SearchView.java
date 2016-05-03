@@ -279,9 +279,9 @@ public class SearchView extends Fragment {
                 nameTextView.setText(item.getName());
                 tagTextView.setText(item.getTag());
                 if ( item.getTag().equalsIgnoreCase("OPEN") ) {
-                    tagTextView.setTextColor(Color.BLUE);
+                    tagTextView.setTextColor(Color.parseColor("#428bca"));
                 } else {
-                    tagTextView.setTextColor(Color.RED);
+                    tagTextView.setTextColor(Color.parseColor("#ff6961"));
                 }
 
                 if ( item.getRequestBool() ) {
@@ -320,9 +320,9 @@ public class SearchView extends Fragment {
                 tagTextView.setText(item.getTag());
 
                 if ( item.getTag().equalsIgnoreCase("OPEN") ) {
-                    tagTextView.setTextColor(Color.BLUE);
+                    tagTextView.setTextColor(Color.parseColor("#428bca"));
                 } else {
-                    tagTextView.setTextColor(Color.RED);
+                    tagTextView.setTextColor(Color.parseColor("#ff6961"));
                 }
 
                 if ( item.getRequestBool() ) {
