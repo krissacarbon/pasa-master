@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -37,7 +38,8 @@ import java.util.List;
 public class SearchView extends Fragment {
 
     public ArrayList<ProductObject> mProducts = new ArrayList<ProductObject>();
-    private LinearLayout mProductList;
+    private LinearLayout mProductsLeft;
+    private LinearLayout mProductsRight;
     private List<Pair<String,String>> params;
     private ProgressDialog mProgressDialog;
     private JSONObject mData;
@@ -258,26 +260,34 @@ public class SearchView extends Fragment {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            SearchView.this.mProductList = (LinearLayout) SearchView.this.getView().findViewById(R.id.product_layout);
-            SearchView.this.mProductList.removeAllViews();
-            for (int i = 0 ;i < SearchView.this.mProducts.size(); i++) {
+            SearchView.this.mProductsLeft = (LinearLayout) SearchView.this.getView().findViewById(R.id.left_ll);
+            SearchView.this.mProductsLeft.removeAllViews();
+            SearchView.this.mProductsRight = (LinearLayout) SearchView.this.getView().findViewById(R.id.right_ll);
+            SearchView.this.mProductsRight.removeAllViews();
+
+            for (int i = 0;i < SearchView.this.mProducts.size(); i+=2) {
 
                 final ProductObject item = SearchView.this.mProducts.get(i);
-                View layout = LayoutInflater.from(SearchView.this.getActivity()).inflate(R.layout.product_list_item, SearchView.this.mProductList, false);
+                View layout = LayoutInflater.from(SearchView.this.getActivity()).inflate(R.layout.product_list_item, SearchView.this.mProductsLeft, false);
                 TextView nameTextView = (TextView) layout.findViewById(R.id.item_name_tv);
                 TextView tagTextView = (TextView) layout.findViewById(R.id.tag_tv);
                 TextView priceTextView = (TextView) layout.findViewById(R.id.item_price_tv);
                 ImageView productIcon = (ImageView) layout.findViewById(R.id.icon);
                 DownloadImageTask dlTask = new DownloadImageTask(productIcon);
-                dlTask.execute("https://pasabuy.com/displayImage/" + item.getImageUrl() );
+                dlTask.execute("https://pasabuy.com/displayImage/" + item.getImageUrl());
 
                 nameTextView.setText(item.getName());
                 tagTextView.setText(item.getTag());
+                if ( item.getTag().equalsIgnoreCase("OPEN") ) {
+                    tagTextView.setTextColor(Color.BLUE);
+                } else {
+                    tagTextView.setTextColor(Color.RED);
+                }
 
                 if ( item.getRequestBool() ) {
-                    priceTextView.setText("Price is around Php" + item.getPrice());
+                    priceTextView.setText("Price is around PHP " + item.getPrice());
                 } else {
-                    priceTextView.setText("Willing to sell for Php" + item.getPrice());
+                    priceTextView.setText("Willing to sell for PHP " + item.getPrice());
                 }
 
                 if ( !item.getLiked() ) {
@@ -293,7 +303,42 @@ public class SearchView extends Fragment {
                     }
                 });
 
-                SearchView.this.mProductList.addView(layout);
+                SearchView.this.mProductsLeft.addView(layout);
+            }
+            for (int i = 1;i < SearchView.this.mProducts.size(); i+=2) {
+
+                final ProductObject item = SearchView.this.mProducts.get(i);
+                View layout = LayoutInflater.from(SearchView.this.getActivity()).inflate(R.layout.product_list_item, SearchView.this.mProductsRight, false);
+                TextView nameTextView = (TextView) layout.findViewById(R.id.item_name_tv);
+                TextView tagTextView = (TextView) layout.findViewById(R.id.tag_tv);
+                TextView priceTextView = (TextView) layout.findViewById(R.id.item_price_tv);
+                ImageView productIcon = (ImageView) layout.findViewById(R.id.icon);
+                DownloadImageTask dlTask = new DownloadImageTask(productIcon);
+                dlTask.execute("https://pasabuy.com/displayImage/" + item.getImageUrl() );
+
+                nameTextView.setText(item.getName());
+                tagTextView.setText(item.getTag());
+
+                if ( item.getRequestBool() ) {
+                    priceTextView.setText("Price is around PHP " + item.getPrice());
+                } else {
+                    priceTextView.setText("Willing to sell for PHP " + item.getPrice());
+                }
+
+                if ( !item.getLiked() ) {
+                    ((ImageView) layout.findViewById(R.id.heart_image)).setImageDrawable(SearchView.this.getResources().getDrawable(R.drawable.heart_white));
+                }
+
+                layout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent productView = new Intent(SearchView.this.getActivity(),ProductItemView.class);
+                        productView.putExtra("prodId", item.getProductId());
+                        startActivity(productView);
+                    }
+                });
+
+                SearchView.this.mProductsRight.addView(layout);
             }
 
             try {

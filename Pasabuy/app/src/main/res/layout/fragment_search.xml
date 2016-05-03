@@ -24,9 +24,26 @@
         <LinearLayout
             android:id = "@+id/product_layout"
             android:layout_width = "fill_parent"
-            android:orientation = "vertical"
+            android:orientation = "horizontal"
             android:layout_height = "wrap_content">
-
+            <LinearLayout
+                android:id="@+id/left_ll"
+                android:orientation="vertical"
+                android:layout_width="1dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:layout_gravity="top"
+                android:gravity="top"
+                android:layout_height="wrap_content"></LinearLayout>
+            <LinearLayout
+                android:id="@+id/right_ll"
+                android:layout_weight="1"
+                android:layout_width="1dp"
+                android:padding="5dp"
+                android:orientation="vertical"
+                android:layout_gravity="top"
+                android:gravity="top"
+                android:layout_height="wrap_content"></LinearLayout>
         </LinearLayout>
 
     </ScrollView>

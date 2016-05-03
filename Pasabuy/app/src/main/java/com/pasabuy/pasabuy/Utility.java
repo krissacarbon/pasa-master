@@ -221,7 +221,7 @@ public class Utility {
         conn.connect();
 
         JSONObject result = null;
-
+        Log.e("Connection", conn.getResponseMessage());
         try {
             if(!urlString.contains(GET_JOURNEY_API) && !urlString.contains(GET_ALL_CATEGORY) && !urlString.contains(GET_ALL_LOCATION)) {
                 Log.e("URL",urlString);

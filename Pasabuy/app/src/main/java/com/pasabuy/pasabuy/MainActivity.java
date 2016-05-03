@@ -26,6 +26,7 @@ import android.widget.ListView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -240,10 +241,10 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public void onResume() {
         super.onResume();
-//        new getLocationAndCategoryTask().execute();
+        //new APITestTask().execute();
     }
 
-    private class getLocationAndCategoryTask extends AsyncTask<Void, Void, Void>
+    private class APITestTask extends AsyncTask<Void, Void, Void>
     {
         @Override
         protected void onPreExecute() {
@@ -266,9 +267,17 @@ public class MainActivity extends ActionBarActivity {
             JSONArray productList = new JSONArray();
             JSONArray productLiked = new JSONArray();
 
-//            MainActivity.this.mEditor.putString("Locations",jsonLocation.toString());
-//            MainActivity.this.mEditor.commit();
+            JSONObject obj = null;
+            JSONObject obj2 = null;
+            try {
+                //obj = Utility.get_all_location();
+                obj2 = Utility.get_all_category();
 
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+//            Log.e("Loc", obj.toString());
+//            Log.e("Cat", obj2.toString());
             return null;
         }
 
