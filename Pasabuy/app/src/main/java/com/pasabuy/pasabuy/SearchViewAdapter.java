@@ -1,8 +1,5 @@
 package com.pasabuy.pasabuy;
 
-/**
- * Created by jesus on 4/26/16.
- */
 //    public class SearchViewAdapter extends ArrayAdapter<ProductObject> {
 //        private LayoutInflater mInflater ;
 //

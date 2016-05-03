@@ -32,9 +32,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Krissa on 18/02/2016.
- */
 public class MainActivity extends ActionBarActivity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;

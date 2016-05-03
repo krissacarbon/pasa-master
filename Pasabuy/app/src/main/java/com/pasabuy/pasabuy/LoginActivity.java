@@ -1,8 +1,5 @@
 package com.pasabuy.pasabuy;
 
-/**
- * Created by Krissa on 18/02/2016.
- */
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
